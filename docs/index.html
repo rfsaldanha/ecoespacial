@@ -21,7 +21,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -170,8 +189,14 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="apresentação" class="level1 unnumbered">
 <h1 class="unnumbered">Apresentação</h1>
+<p>Este livro <em>on-line</em> apresenta uma introdução a Econometria Espacial aplicada com R. Recomendamos como referência o livro <em>Econometria Espacial aplicada</em> <span class="citation" data-cites="Almeida2012">(<a href="references.html#ref-Almeida2012" role="doc-biblioref">Almeida 2012</a>)</span>.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-Almeida2012" class="csl-entry" role="listitem">
+Almeida, Eduardo. 2012. <em>Econometria espacial aplicada</em>. Campinas: Alínea.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->

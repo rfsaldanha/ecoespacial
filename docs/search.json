@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Econometria Espacial aplicada com R",
     "section": "",
-    "text": "Apresentação"
+    "text": "Apresentação\nEste livro on-line apresenta uma introdução a Econometria Espacial aplicada com R. Recomendamos como referência o livro Econometria Espacial aplicada (Almeida 2012).\n\n\n\n\nAlmeida, Eduardo. 2012. Econometria espacial aplicada. Campinas: Alínea."
   },
   {
     "objectID": "intro.html",
@@ -23,9 +23,9 @@
   {
     "objectID": "references.html",
     "href": "references.html",
-    "title": "References",
+    "title": "Referências",
     "section": "",
-    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+    "text": "Almeida, Eduardo. 2012. Econometria Espacial Aplicada.\nCampinas: Alínea."
   },
   {
     "objectID": "intro_r.html",
