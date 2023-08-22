@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Econometria Espacial aplicada com R - Apêndice A — Importar matriz</title>
+<title>Econometria Espacial aplicada com R - Apêndice A — Importar matrizes criadas no Geoda</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -78,7 +112,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./importar_matriz.html">Apêndices</a></li><li class="breadcrumb-item"><a href="./importar_matriz.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Importar matriz</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./importar_matriz.html">Apêndices</a></li><li class="breadcrumb-item"><a href="./importar_matriz.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Importar matrizes criadas no Geoda</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -163,7 +197,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./importar_matriz.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Importar matriz</span></span></a>
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Importar matrizes criadas no Geoda</span></span></a>
   </div>
 </li>
       </ul>
@@ -174,14 +208,29 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#shapefile" id="toc-shapefile" class="nav-link active" data-scroll-target="#shapefile"><span class="header-section-number">A.1</span> Shapefile</a></li>
+  <li><a href="#importar-matriz-criada-no-geoda" id="toc-importar-matriz-criada-no-geoda" class="nav-link" data-scroll-target="#importar-matriz-criada-no-geoda"><span class="header-section-number">B</span> Importar matriz criada no Geoda</a>
+  <ul class="collapse">
+  <li><a href="#teste-da-importação" id="toc-teste-da-importação" class="nav-link" data-scroll-target="#teste-da-importação"><span class="header-section-number">B.1</span> Teste da importação</a></li>
+  <li><a href="#criando-os-polígonos-no-r" id="toc-criando-os-polígonos-no-r" class="nav-link" data-scroll-target="#criando-os-polígonos-no-r"><span class="header-section-number">B.2</span> Criando os polígonos no R</a>
+  <ul class="collapse">
+  <li><a href="#matriz" id="toc-matriz" class="nav-link" data-scroll-target="#matriz"><span class="header-section-number">B.2.1</span> Matriz</a></li>
+  <li><a href="#comparação" id="toc-comparação" class="nav-link" data-scroll-target="#comparação"><span class="header-section-number">B.2.2</span> Comparação</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Apêndice A — Importar matriz</h1>
+<h1 class="title">Apêndice A — Importar matrizes criadas no Geoda</h1>
 </div>
 
 
@@ -196,8 +245,195 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="shapefile" class="level2" data-number="A.1">
+<h2 data-number="A.1" class="anchored" data-anchor-id="shapefile"><span class="header-section-number">A.1</span> Shapefile</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pacotes</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Linking to GEOS 3.10.2, GDAL 3.4.1, PROJ 8.2.1; sf_use_s2() is TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sp)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The legacy packages maptools, rgdal, and rgeos, underpinning the sp package,
+which was just loaded, will retire in October 2023.
+Please refer to R-spatial evolution reports for details, especially
+https://r-spatial.org/r/2023/05/15/evolution4.html.
+It may be desirable to make the sf package available;
+package maintainers should consider adding sf to Suggests:.
+The sp package is now running under evolution status 2
+     (status 2 uses the sf package in place of rgdal)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Abra o arquivo 'gm10.shp'</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>tvpaga.shp <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/tvpaga4.shp"</span>, <span class="at">options =</span> <span class="st">"ENCODING=WINDOWS-1252"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>options:        ENCODING=WINDOWS-1252 
+Reading layer `tvpaga4' from data source 
+  `/home/rfsaldanha/projects/ecoespacial/data/tvpaga4.shp' using driver `ESRI Shapefile'
+Simple feature collection with 74 features and 41 fields
+Geometry type: POINT
+Dimension:     XY
+Bounding box:  xmin: -56.69285 ymin: -32.06813 xmax: -35.70185 ymax: -3.783775
+CRS:           NA</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tvpaga.shp <span class="ot">&lt;-</span> <span class="fu">st_make_valid</span>(tvpaga.shp)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>tvpaga.shp <span class="ot">&lt;-</span> <span class="fu">as_Spatial</span>(tvpaga.shp)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotar o mapa</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tvpaga.shp)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="importar_matriz_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="importar-matriz-criada-no-geoda" class="level1" data-number="B">
+<h1 data-number="B"><span class="header-section-number">B</span> Importar matriz criada no Geoda</h1>
+<p>Matrizes criadas no Geoda através de polígonos de Voronoi.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spdep)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: spData</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>To access larger datasets in this package, install the spDataLarge
+package with: `install.packages('spDataLarge',
+repos='https://nowosad.github.io/drat/', type='source')`</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>queen_nb <span class="ot">&lt;-</span> <span class="fu">read.gal</span>(<span class="at">file =</span> <span class="st">"data/tvpaga_queen.gal"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>queen_w <span class="ot">&lt;-</span> <span class="fu">nb2listw</span>(<span class="at">neighbours =</span> queen_nb, <span class="at">style =</span> <span class="st">"W"</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>rook_nb <span class="ot">&lt;-</span> <span class="fu">read.gal</span>(<span class="at">file =</span> <span class="st">"data/tvpaga_rook.gal"</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>rook_w <span class="ot">&lt;-</span> <span class="fu">nb2listw</span>(<span class="at">neighbours =</span> rook_nb, <span class="at">style =</span> <span class="st">"W"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="teste-da-importação" class="level2" data-number="B.1">
+<h2 data-number="B.1" class="anchored" data-anchor-id="teste-da-importação"><span class="header-section-number">B.1</span> Teste da importação</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(queen_nb)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Neighbour list object:
+Number of regions: 74 
+Number of nonzero links: 404 
+Percentage nonzero weights: 7.377648 
+Average number of links: 5.459459 
+Link number distribution:
+
+ 2  3  4  5  6  7  8  9 
+ 1  3 17 18 18 10  6  1 
+1 least connected region:
+73 with 2 links
+1 most connected region:
+33 with 9 links</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rook_nb)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Neighbour list object:
+Number of regions: 74 
+Number of nonzero links: 404 
+Percentage nonzero weights: 7.377648 
+Average number of links: 5.459459 
+Link number distribution:
+
+ 2  3  4  5  6  7  8  9 
+ 1  3 17 18 18 10  6  1 
+1 least connected region:
+73 with 2 links
+1 most connected region:
+33 with 9 links</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">moran.test</span>(<span class="at">x =</span> tvpaga.shp<span class="sc">@</span>data<span class="sc">$</span>GIN, <span class="at">listw =</span> queen_w)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Moran I test under randomisation
+
+data:  tvpaga.shp@data$GIN  
+weights: queen_w    
+
+Moran I statistic standard deviate = 0.59822, p-value = 0.2748
+alternative hypothesis: greater
+sample estimates:
+Moran I statistic       Expectation          Variance 
+    -1.141553e-02     -1.369863e-02      1.456567e-05 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">moran.test</span>(<span class="at">x =</span> tvpaga.shp<span class="sc">@</span>data<span class="sc">$</span>GIN, <span class="at">listw =</span> rook_w)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Moran I test under randomisation
+
+data:  tvpaga.shp@data$GIN  
+weights: rook_w    
+
+Moran I statistic standard deviate = 0.59822, p-value = 0.2748
+alternative hypothesis: greater
+sample estimates:
+Moran I statistic       Expectation          Variance 
+    -1.141553e-02     -1.369863e-02      1.456567e-05 </code></pre>
+</div>
+</div>
+</section>
+<section id="criando-os-polígonos-no-r" class="level2" data-number="B.2">
+<h2 data-number="B.2" class="anchored" data-anchor-id="criando-os-polígonos-no-r"><span class="header-section-number">B.2</span> Criando os polígonos no R</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dismo)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: raster</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>coordenadas <span class="ot">&lt;-</span> <span class="fu">coordinates</span>(<span class="at">obj =</span> tvpaga.shp)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>tvpaga_voronoi <span class="ot">&lt;-</span> <span class="fu">voronoi</span>(coordenadas)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tvpaga_voronoi)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="importar_matriz_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<section id="matriz" class="level3" data-number="B.2.1">
+<h3 data-number="B.2.1" class="anchored" data-anchor-id="matriz"><span class="header-section-number">B.2.1</span> Matriz</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Matriz queen</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>w1 <span class="ot">&lt;-</span> <span class="fu">nb2listw</span>(<span class="fu">poly2nb</span>(tvpaga_voronoi, <span class="at">queen =</span> <span class="cn">TRUE</span>), <span class="at">style =</span> <span class="st">"W"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="comparação" class="level3" data-number="B.2.2">
+<h3 data-number="B.2.2" class="anchored" data-anchor-id="comparação"><span class="header-section-number">B.2.2</span> Comparação</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">moran.test</span>(<span class="at">x =</span> tvpaga.shp<span class="sc">@</span>data<span class="sc">$</span>GIN, <span class="at">listw =</span> queen_w)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Moran I test under randomisation
+
+data:  tvpaga.shp@data$GIN  
+weights: queen_w    
+
+Moran I statistic standard deviate = 0.59822, p-value = 0.2748
+alternative hypothesis: greater
+sample estimates:
+Moran I statistic       Expectation          Variance 
+    -1.141553e-02     -1.369863e-02      1.456567e-05 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">moran.test</span>(<span class="at">x =</span> tvpaga.shp<span class="sc">@</span>data<span class="sc">$</span>GIN, <span class="at">listw =</span> w1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Moran I test under randomisation
+
+data:  tvpaga.shp@data$GIN  
+weights: w1    
+
+Moran I statistic standard deviate = 0.61642, p-value = 0.2688
+alternative hypothesis: greater
+sample estimates:
+Moran I statistic       Expectation          Variance 
+    -1.141553e-02     -1.369863e-02      1.371827e-05 </code></pre>
+</div>
+</div>
 
 
+</section>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
