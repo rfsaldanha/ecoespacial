@@ -1,3 +1,7 @@
+---
+toc: false
+---
+
 # Apresentação {.unnumbered}
 
 Este livro *on-line* apresenta uma introdução a Econometria Espacial aplicada com R. Recomendamos como referência o livro *Econometria Espacial aplicada* [@Almeida2012].

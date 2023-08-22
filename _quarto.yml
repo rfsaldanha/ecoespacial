@@ -4,7 +4,9 @@ project:
 
 book:
   title: "Econometria Espacial aplicada com R"
-  author: "Raphael Saldanha; Eduardo Almeida"
+  author: 
+    - "Raphael Saldanha"
+    - "Eduardo Almeida"
   date: today
   chapters:
     - index.qmd
