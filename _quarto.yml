@@ -9,6 +9,8 @@ book:
   chapters:
     - index.qmd
     - intro_r.qmd
+    - aede.qmd
+    - matrizes.qmd
     - references.qmd
 
 lang: pt

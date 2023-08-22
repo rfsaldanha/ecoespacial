@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Econometria Espacial aplicada com R - Referências</title>
+<title>Econometria Espacial aplicada com R - 2&nbsp; Análise Exploratória de Dados Espaciais (AED-E)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
 }
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -49,7 +64,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./matrizes.html" rel="prev">
+<link href="./matrizes.html" rel="next">
+<link href="./intro_r.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -97,7 +113,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">Referências</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./aede.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Análise Exploratória de Dados Espaciais (AED-E)</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -136,7 +152,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./aede.html" class="sidebar-item-text sidebar-link">
+  <a href="./aede.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Análise Exploratória de Dados Espaciais (AED-E)</span></span></a>
   </div>
 </li>
@@ -148,7 +164,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link active">
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Referências</span></a>
   </div>
 </li>
@@ -158,14 +174,25 @@ div.csl-indent {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#leitura-do-shapefile" id="toc-leitura-do-shapefile" class="nav-link active" data-scroll-target="#leitura-do-shapefile"><span class="header-section-number">2.1</span> Leitura do shapefile</a></li>
+  <li><a href="#atributos-do-shapefile" id="toc-atributos-do-shapefile" class="nav-link" data-scroll-target="#atributos-do-shapefile"><span class="header-section-number">2.2</span> Atributos do shapefile</a></li>
+  <li><a href="#mapa" id="toc-mapa" class="nav-link" data-scroll-target="#mapa"><span class="header-section-number">2.3</span> Mapa</a>
+  <ul class="collapse">
+  <li><a href="#sua-vez" id="toc-sua-vez" class="nav-link" data-scroll-target="#sua-vez"><span class="header-section-number">2.3.1</span> Sua vez</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Referências</h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Análise Exploratória de Dados Espaciais (AED-E)</span></h1>
 </div>
 
 
@@ -180,14 +207,113 @@ div.csl-indent {
 
 </header>
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-Almeida2012" class="csl-entry" role="listitem">
-Almeida, Eduardo. 2012. <em>Econometria Espacial Aplicada</em>.
-Campinas: Alínea.
+<section id="leitura-do-shapefile" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="leitura-do-shapefile"><span class="header-section-number">2.1</span> Leitura do shapefile</h2>
+<p>Para a leitura de arquivos <strong>shapefile</strong> no R, precisamos usar alguns pacotes. Após a instalação dos pacotes, use os seguintes comandos.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pacotes</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Linking to GEOS 3.10.2, GDAL 3.4.1, PROJ 8.2.1; sf_use_s2() is TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sp)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The legacy packages maptools, rgdal, and rgeos, underpinning the sp package,
+which was just loaded, will retire in October 2023.
+Please refer to R-spatial evolution reports for details, especially
+https://r-spatial.org/r/2023/05/15/evolution4.html.
+It may be desirable to make the sf package available;
+package maintainers should consider adding sf to Suggests:.
+The sp package is now running under evolution status 2
+     (status 2 uses the sf package in place of rgdal)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Abra o arquivo 'gm10.shp'</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># fp_mg.shp &lt;- rgdal::readOGR("data", "FP_MG", encoding = "ISO-8859-1")</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>fp_mg.shp <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/FP_MG.shp"</span>, <span class="at">options =</span> <span class="st">"ENCODING=WINDOWS-1252"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>options:        ENCODING=WINDOWS-1252 
+Reading layer `FP_MG' from data source 
+  `/home/rfsaldanha/projects/ecoespacial/data/FP_MG.shp' using driver `ESRI Shapefile'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in CPL_read_ogr(dsn, layer, query, as.character(options), quiet, : GDAL
+Message 1: organizePolygons() received an unexpected geometry.  Either a
+polygon with interior rings, or a polygon with less than 4 points, or a
+non-Polygon geometry.  Return arguments as a collection.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 66 features and 41 fields
+Geometry type: POLYGON
+Dimension:     XY
+Bounding box:  xmin: -51.06258 ymin: -22.91696 xmax: -39.85724 ymax: -14.23725
+CRS:           NA</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>fp_mg.shp <span class="ot">&lt;-</span> <span class="fu">st_make_valid</span>(fp_mg.shp)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>fp_mg.shp <span class="ot">&lt;-</span> <span class="fu">as_Spatial</span>(fp_mg.shp)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># encoding = "UTF-8"</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotar o mapa</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fp_mg.shp)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="aede_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+</section>
+<section id="atributos-do-shapefile" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="atributos-do-shapefile"><span class="header-section-number">2.2</span> Atributos do shapefile</h2>
+<p>Podemos ver a tabela de atributos do shapefile com desta forma.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(fp_mg.shp<span class="sc">@</span>data)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  CODMIC      NOMMIC      Q     AC     AP    K   R  RP RNP DRNP   F    AREA
+1     41     Aimorés 134310  60132  60132 1833 363 155 208   25  84  8354.1
+2     49     Alfenas 564476 113253 113253 7203 312 273  39    8   1  4998.9
+3     14    Almenara  84631  20737  20737  783 383 150 233   15   1 15504.5
+4     55 Andrelândia  59164  27764  27764 1154 264 200  64   13 227  5047.3
+5     12     Araçuaí 159897  36779  36779  552 315 162 153   15   1 10299.4
+6     23       Araxá 495102 160580 160643 7582 645 564  81    6 327 14145.6
+  ESCTOT POPTOT    LP   ACP    KP   ETOTP   DRNPP       FP     RNPP      RPP
+1    347 152658 0.111 0.394 0.012 0.00227 0.00016 0.000550 0.001363 0.001015
+2    229 179366 0.111 0.631 0.040 0.00128 0.00004 0.000006 0.000217 0.001522
+3    384 213342 0.047 0.097 0.004 0.00180 0.00007 0.000005 0.001092 0.000703
+4    191  70783 0.037 0.392 0.016 0.00270 0.00018 0.003207 0.000904 0.002826
+5    327 143468 0.143 0.256 0.004 0.00228 0.00010 0.000007 0.001066 0.001129
+6    182 158275 0.043 1.015 0.048 0.00115 0.00004 0.002066 0.000512 0.003563
+       R_P       QP   X_COORD   Y_COORD CMICRO     VP      VPP    LA   LM     L
+1 0.002378 0.879810 -41.38876 -19.53116  31041  78349 0.513232 42737 3997 46734
+2 0.001739 3.147062 -46.01852 -21.37551  31049 216064 1.204598 33737 1118 34855
+3 0.001795 0.396692 -40.65978 -16.35385  31014  40164 0.188261 30920 4259 35179
+4 0.003730 0.835850 -44.44562 -21.95045  31055  42360 0.598449 15135  908 16043
+5 0.002196 1.114513 -41.87023 -17.00645  31012  28864 0.201188 45015 7069 52084
+6 0.004075 3.128112 -46.95948 -19.59779  31023 197010 1.244732 23442 1488 24930
+  CO_RUR  NU_RUR   CO_TOT      EER      K_L VEG TEMP PREC     KL
+1   4937 1314045  4402218 0.003757 0.039222   1    4    1 0.0392
+2   6736 2957879 12228817 0.002277 0.206656   2    2    3 0.2067
+3   1431  282421  3363297 0.005067 0.022258   2    5    1 0.0223
+4   1717  498819  2819950 0.003442 0.071932   2    1    4 0.0719
+5   1431  365829  2404595 0.003912 0.010598   3    4    1 0.0106
+6   4357 1476959 14220985 0.002950 0.304132   1    2    4 0.3041</code></pre>
+</div>
+</div>
+</section>
+<section id="mapa" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="mapa"><span class="header-section-number">2.3</span> Mapa</h2>
+<p>Podemos produzir um mapa colorido com os seguintes comandos.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">"white"</span>, <span class="st">"blue"</span>))(<span class="dv">128</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">palette</span>(p)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fp_mg.shp, <span class="at">col =</span> fp_mg.shp<span class="sc">@</span>data<span class="sc">$</span>Q)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="aede_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<section id="sua-vez" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="sua-vez"><span class="header-section-number">2.3.1</span> Sua vez</h3>
+<p>Faça um mapa com a variável AC com a cor vermelha.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -488,11 +614,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./matrizes.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Matrizes de vizinhos espaciais</span></span>
+      <a href="./intro_r.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução ao R</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./matrizes.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Matrizes de vizinhos espaciais</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
