@@ -11,6 +11,8 @@ book:
     - intro_r.qmd
     - aede.qmd
     - matrizes.qmd
+    - modelos_corte_transversal.qmd
+    - gwr.qmd
     - references.qmd
 
 lang: pt
