@@ -214,5 +214,6 @@ lisaplot(fp_mg.shp, fp_mg.shp@data$TEMP, w1)
 Faça o LISA para a variável `AP` com a matriz `w1`.
 
 ```{r}
-
+#| code-fold: true
+lisaplot(fp_mg.shp, fp_mg.shp@data$AP, w1)
 ```
