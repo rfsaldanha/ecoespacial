@@ -13,6 +13,7 @@ book:
     - matrizes.qmd
     - modelos_corte_transversal.qmd
     - gwr.qmd
+    - modelos_painel.qmd
     - references.qmd
 
 lang: pt
