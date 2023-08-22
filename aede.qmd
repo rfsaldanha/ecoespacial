@@ -10,7 +10,6 @@ library(sf)
 library(sp)
 
 # Abra o arquivo 'gm10.shp'
-# fp_mg.shp <- rgdal::readOGR("data", "FP_MG", encoding = "ISO-8859-1")
 fp_mg.shp <- st_read("data/FP_MG.shp", options = "ENCODING=WINDOWS-1252")
 fp_mg.shp <- st_make_valid(fp_mg.shp)
 fp_mg.shp <- as_Spatial(fp_mg.shp)
@@ -22,7 +21,7 @@ plot(fp_mg.shp)
 
 ## Atributos do shapefile
 
-Podemos ver a tabela de atributos do shapefile com desta forma.
+Podemos ver a tabela de atributos do shapefile desta forma.
 
 ```{r}
 head(fp_mg.shp@data)
@@ -43,5 +42,8 @@ plot(fp_mg.shp, col = fp_mg.shp@data$Q)
 Faça um mapa com a variável AC com a cor vermelha.
 
 ```{r}
-
+#| code-fold: true
+p <- colorRampPalette(c("yellow", "red"))(128)
+palette(p)
+plot(fp_mg.shp, col = fp_mg.shp@data$AC)
 ```
