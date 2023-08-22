@@ -1,3 +1,9 @@
 # Apresentação {.unnumbered}
 
 Este livro *on-line* apresenta uma introdução a Econometria Espacial aplicada com R. Recomendamos como referência o livro *Econometria Espacial aplicada* [@Almeida2012].
+
+------------------------------------------------------------------------
+
+Raphael Saldanha é geógrafo, mestre em saúde pública, doutor em Informação e Comunicação em Saúde, *postdoc researcher* no Inria (*Institut national de recherche en sciences et technologies du numérique, France*).
+
+Eduardo Almeida é economista, mestre e doutor em Economia, postdoc pela Escola Superior de Agricultura "Luiz de Queiroz", professor adjunto da Faculdade de Economia da Universidade Federal de Juiz de Fora (UFJF) desde 2005.
