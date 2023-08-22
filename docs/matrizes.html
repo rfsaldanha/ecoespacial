@@ -249,8 +249,7 @@ The sp package is now running under evolution status 2
      (status 2 uses the sf package in place of rgdal)</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Abra o arquivo 'gm10.shp'</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># fp_mg.shp &lt;- rgdal::readOGR("data", "FP_MG", encoding = "ISO-8859-1")</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>fp_mg.shp <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/FP_MG.shp"</span>, <span class="at">options =</span> <span class="st">"ENCODING=WINDOWS-1252"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>fp_mg.shp <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/FP_MG.shp"</span>, <span class="at">options =</span> <span class="st">"ENCODING=WINDOWS-1252"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>options:        ENCODING=WINDOWS-1252 
 Reading layer `FP_MG' from data source 
@@ -271,10 +270,9 @@ CRS:           NA</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>fp_mg.shp <span class="ot">&lt;-</span> <span class="fu">st_make_valid</span>(fp_mg.shp)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>fp_mg.shp <span class="ot">&lt;-</span> <span class="fu">as_Spatial</span>(fp_mg.shp)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># encoding = "UTF-8"</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotar o mapa</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fp_mg.shp)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotar o mapa</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fp_mg.shp)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="matrizes_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -491,7 +489,7 @@ U 66 4356  1 0.002368187 0.07316268</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>    k         i valorp
 1   1 0.5228074  0.002
-2   2 0.3875458  0.001
+2   2 0.3875458  0.002
 3   3 0.4531317  0.001
 4   4 0.4199339  0.001
 5   5 0.3944831  0.001
@@ -570,7 +568,7 @@ data:  fp_mg.shp@data$Q
 weights: w5  
 number of simulations + 1: 1000 
 
-statistic = 0.52281, observed rank = 995, p-value = 0.005
+statistic = 0.52281, observed rank = 998, p-value = 0.002
 alternative hypothesis: greater</code></pre>
 </div>
 </div>
@@ -601,7 +599,7 @@ data:  fp_mg.shp@data$Q
 weights: w5 
 number of simulations + 1: 1000 
 
-statistic = 0.4613, observed rank = 3, p-value = 0.003
+statistic = 0.4613, observed rank = 6, p-value = 0.006
 alternative hypothesis: greater</code></pre>
 </div>
 </div>
@@ -685,6 +683,28 @@ Global G statistic        Expectation           Variance
 <section id="sua-vez" class="level3" data-number="3.4.1">
 <h3 data-number="3.4.1" class="anchored" data-anchor-id="sua-vez"><span class="header-section-number">3.4.1</span> Sua vez</h3>
 <p>Calcule o I de Moran local usando a matriz de vizinhança <code>w1</code> para a variável <code>AC</code>e verifique quantas regiões são significativas. Depois, faça o diagrama de dispersão.</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">localmoran</span>(fp_mg.shp<span class="sc">@</span>data<span class="sc">$</span>AC, <span class="at">listw =</span> w1))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>            Ii          E.Ii       Var.Ii       Z.Ii Pr(z != E(Ii))
+1  0.008331081 -2.648711e-05 0.0004165402  0.4094977   0.6821744760
+2  0.849842734 -2.085884e-02 0.2071096162  1.9132389   0.0557174771
+3  0.529839200 -9.632289e-03 0.1500236654  1.3927995   0.1636804207
+4 -0.037360854 -6.355270e-03 0.0781466481 -0.1109136   0.9116848748
+5  0.276052134 -3.145335e-03 0.0317953356  1.5657765   0.1174009499
+6  2.695852306 -7.209967e-02 0.6784210807  3.3605386   0.0007779067</code></pre>
+</div>
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">moran.plot</span>(fp_mg.shp<span class="sc">@</span>data<span class="sc">$</span>AC, <span class="at">listw =</span> w1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="matrizes_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 </section>
 </section>
 <section id="lisa-map" class="level2" data-number="3.5">
@@ -692,32 +712,32 @@ Global G statistic        Expectation           Variance
 <p>O R não tem uma função pronta para criar um mapa LISA, então nós criamos abaixo nossa própria função: <code>lisaplot</code>. Depois de declarada, uma função pode ser usada repetidamente variando seus argumentos.</p>
 <p>Rode o código abaixo.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>lisaplot <span class="ot">&lt;-</span> <span class="cf">function</span>(shapefile, values, listw, <span class="at">pval =</span> <span class="fl">0.05</span>){</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(spdep)</span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>  svalues <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(<span class="fu">scale</span>(values, <span class="at">scale =</span> <span class="cn">FALSE</span>))</span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>  lag_svalues <span class="ot">&lt;-</span> spdep<span class="sc">::</span><span class="fu">lag.listw</span>(listw, svalues)</span>
-<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>  locm <span class="ot">&lt;-</span> spdep<span class="sc">::</span><span class="fu">localmoran</span>(values, listw)</span>
-<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>  sig <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="fu">length</span>(values))</span>
-<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>  sig[(svalues <span class="sc">&gt;=</span> <span class="dv">0</span> <span class="sc">&amp;</span> lag_svalues <span class="sc">&gt;=</span> <span class="dv">0</span>) <span class="sc">&amp;</span> (locm[,<span class="dv">5</span>] <span class="sc">&lt;=</span> pval)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>  sig[(svalues <span class="sc">&lt;=</span> <span class="dv">0</span> <span class="sc">&amp;</span> lag_svalues <span class="sc">&lt;=</span> <span class="dv">0</span>) <span class="sc">&amp;</span> (locm[,<span class="dv">5</span>] <span class="sc">&lt;=</span> pval)] <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>  sig[(svalues <span class="sc">&gt;=</span> <span class="dv">0</span> <span class="sc">&amp;</span> lag_svalues <span class="sc">&lt;=</span> <span class="dv">0</span>) <span class="sc">&amp;</span> (locm[,<span class="dv">5</span>] <span class="sc">&lt;=</span> pval)] <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>  sig[(svalues <span class="sc">&lt;=</span> <span class="dv">0</span> <span class="sc">&amp;</span> lag_svalues <span class="sc">&gt;=</span> <span class="dv">0</span>) <span class="sc">&amp;</span> (locm[,<span class="dv">5</span>] <span class="sc">&lt;=</span> pval)] <span class="ot">&lt;-</span> <span class="dv">4</span></span>
-<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>  sig[locm[,<span class="dv">5</span>] <span class="sc">&gt;</span> pval] <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a>  breaks <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">1</span>)</span>
-<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a>  labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Alto-Alto"</span>, <span class="st">"Baixo-Baixo"</span>, <span class="st">"Alto-Baixo"</span>, <span class="st">"Baixo-Alto"</span>, <span class="st">"N. Sig."</span>)</span>
-<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a>  np <span class="ot">&lt;-</span> <span class="fu">findInterval</span>(sig, breaks)</span>
-<span id="cb47-18"><a href="#cb47-18" aria-hidden="true" tabindex="-1"></a>  colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"lightpink"</span>, <span class="st">"skyblue2"</span>, <span class="st">"white"</span>)</span>
-<span id="cb47-19"><a href="#cb47-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(shapefile, <span class="at">col =</span> colors[np])</span>
-<span id="cb47-20"><a href="#cb47-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mtext</span>(<span class="st">"LISA"</span>, <span class="at">cex =</span> <span class="fl">1.5</span>, <span class="at">side =</span> <span class="dv">3</span>, <span class="at">line =</span> <span class="dv">1</span>)</span>
-<span id="cb47-21"><a href="#cb47-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">legend</span>(<span class="st">"topleft"</span>, <span class="at">legend =</span> labels, <span class="at">fill =</span> colors, <span class="at">bty =</span> <span class="st">"n"</span>)</span>
-<span id="cb47-22"><a href="#cb47-22" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>lisaplot <span class="ot">&lt;-</span> <span class="cf">function</span>(shapefile, values, listw, <span class="at">pval =</span> <span class="fl">0.05</span>){</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(spdep)</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  svalues <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(<span class="fu">scale</span>(values, <span class="at">scale =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>  lag_svalues <span class="ot">&lt;-</span> spdep<span class="sc">::</span><span class="fu">lag.listw</span>(listw, svalues)</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>  locm <span class="ot">&lt;-</span> spdep<span class="sc">::</span><span class="fu">localmoran</span>(values, listw)</span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>  sig <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="fu">length</span>(values))</span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>  sig[(svalues <span class="sc">&gt;=</span> <span class="dv">0</span> <span class="sc">&amp;</span> lag_svalues <span class="sc">&gt;=</span> <span class="dv">0</span>) <span class="sc">&amp;</span> (locm[,<span class="dv">5</span>] <span class="sc">&lt;=</span> pval)] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>  sig[(svalues <span class="sc">&lt;=</span> <span class="dv">0</span> <span class="sc">&amp;</span> lag_svalues <span class="sc">&lt;=</span> <span class="dv">0</span>) <span class="sc">&amp;</span> (locm[,<span class="dv">5</span>] <span class="sc">&lt;=</span> pval)] <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>  sig[(svalues <span class="sc">&gt;=</span> <span class="dv">0</span> <span class="sc">&amp;</span> lag_svalues <span class="sc">&lt;=</span> <span class="dv">0</span>) <span class="sc">&amp;</span> (locm[,<span class="dv">5</span>] <span class="sc">&lt;=</span> pval)] <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a>  sig[(svalues <span class="sc">&lt;=</span> <span class="dv">0</span> <span class="sc">&amp;</span> lag_svalues <span class="sc">&gt;=</span> <span class="dv">0</span>) <span class="sc">&amp;</span> (locm[,<span class="dv">5</span>] <span class="sc">&lt;=</span> pval)] <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a>  sig[locm[,<span class="dv">5</span>] <span class="sc">&gt;</span> pval] <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a>  breaks <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">1</span>)</span>
+<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a>  labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Alto-Alto"</span>, <span class="st">"Baixo-Baixo"</span>, <span class="st">"Alto-Baixo"</span>, <span class="st">"Baixo-Alto"</span>, <span class="st">"N. Sig."</span>)</span>
+<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a>  np <span class="ot">&lt;-</span> <span class="fu">findInterval</span>(sig, breaks)</span>
+<span id="cb50-18"><a href="#cb50-18" aria-hidden="true" tabindex="-1"></a>  colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"lightpink"</span>, <span class="st">"skyblue2"</span>, <span class="st">"white"</span>)</span>
+<span id="cb50-19"><a href="#cb50-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(shapefile, <span class="at">col =</span> colors[np])</span>
+<span id="cb50-20"><a href="#cb50-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mtext</span>(<span class="st">"LISA"</span>, <span class="at">cex =</span> <span class="fl">1.5</span>, <span class="at">side =</span> <span class="dv">3</span>, <span class="at">line =</span> <span class="dv">1</span>)</span>
+<span id="cb50-21"><a href="#cb50-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">legend</span>(<span class="st">"topleft"</span>, <span class="at">legend =</span> labels, <span class="at">fill =</span> colors, <span class="at">bty =</span> <span class="st">"n"</span>)</span>
+<span id="cb50-22"><a href="#cb50-22" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>E o LISA para a variável <code>TEMP</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lisaplot</span>(fp_mg.shp, fp_mg.shp<span class="sc">@</span>data<span class="sc">$</span>TEMP, w5)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lisaplot</span>(fp_mg.shp, fp_mg.shp<span class="sc">@</span>data<span class="sc">$</span>TEMP, w1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="matrizes_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -725,6 +745,15 @@ Global G statistic        Expectation           Variance
 <section id="sua-vez-1" class="level3" data-number="3.5.1">
 <h3 data-number="3.5.1" class="anchored" data-anchor-id="sua-vez-1"><span class="header-section-number">3.5.1</span> Sua vez</h3>
 <p>Faça o LISA para a variável <code>AP</code> com a matriz <code>w1</code>.</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lisaplot</span>(fp_mg.shp, fp_mg.shp<span class="sc">@</span>data<span class="sc">$</span>AP, w1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="matrizes_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 
 
 </section>

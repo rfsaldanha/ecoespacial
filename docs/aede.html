@@ -228,8 +228,7 @@ The sp package is now running under evolution status 2
      (status 2 uses the sf package in place of rgdal)</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Abra o arquivo 'gm10.shp'</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># fp_mg.shp &lt;- rgdal::readOGR("data", "FP_MG", encoding = "ISO-8859-1")</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>fp_mg.shp <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/FP_MG.shp"</span>, <span class="at">options =</span> <span class="st">"ENCODING=WINDOWS-1252"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>fp_mg.shp <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/FP_MG.shp"</span>, <span class="at">options =</span> <span class="st">"ENCODING=WINDOWS-1252"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>options:        ENCODING=WINDOWS-1252 
 Reading layer `FP_MG' from data source 
@@ -261,7 +260,7 @@ CRS:           NA</code></pre>
 </section>
 <section id="atributos-do-shapefile" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="atributos-do-shapefile"><span class="header-section-number">2.2</span> Atributos do shapefile</h2>
-<p>Podemos ver a tabela de atributos do shapefile com desta forma.</p>
+<p>Podemos ver a tabela de atributos do shapefile desta forma.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(fp_mg.shp<span class="sc">@</span>data)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -310,6 +309,17 @@ CRS:           NA</code></pre>
 <section id="sua-vez" class="level3" data-number="2.3.1">
 <h3 data-number="2.3.1" class="anchored" data-anchor-id="sua-vez"><span class="header-section-number">2.3.1</span> Sua vez</h3>
 <p>Faça um mapa com a variável AC com a cor vermelha.</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">"yellow"</span>, <span class="st">"red"</span>))(<span class="dv">128</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">palette</span>(p)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fp_mg.shp, <span class="at">col =</span> fp_mg.shp<span class="sc">@</span>data<span class="sc">$</span>AC)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="aede_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 
 
 </section>
