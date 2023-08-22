@@ -5,12 +5,13 @@ project:
 book:
   title: "Econometria Espacial aplicada com R"
   author: "Raphael Saldanha; Eduardo Almeida"
-  language: pt
   date: "Agosto de 2023"
   chapters:
     - index.qmd
     - intro_r.qmd
     - references.qmd
+
+lang: pt
 
 bibliography: references.bib
 
