@@ -10,11 +10,9 @@ library(sf)
 library(sp)
 
 # Abra o arquivo 'gm10.shp'
-# fp_mg.shp <- rgdal::readOGR("data", "FP_MG", encoding = "ISO-8859-1")
 fp_mg.shp <- st_read("data/FP_MG.shp", options = "ENCODING=WINDOWS-1252")
 fp_mg.shp <- st_make_valid(fp_mg.shp)
 fp_mg.shp <- as_Spatial(fp_mg.shp)
-# encoding = "UTF-8"
 
 # Plotar o mapa
 plot(fp_mg.shp)
@@ -168,7 +166,9 @@ moran.plot(fp_mg.shp@data$Q, listw = w5)
 Calcule o I de Moran local usando a matriz de vizinhança `w1` para a variável `AC`e verifique quantas regiões são significativas. Depois, faça o diagrama de dispersão.
 
 ```{r}
-
+#| code-fold: true
+head(localmoran(fp_mg.shp@data$AC, listw = w1))
+moran.plot(fp_mg.shp@data$AC, listw = w1)
 ```
 
 ## LISA map
@@ -206,7 +206,7 @@ lisaplot <- function(shapefile, values, listw, pval = 0.05){
 E o LISA para a variável `TEMP`.
 
 ```{r}
-lisaplot(fp_mg.shp, fp_mg.shp@data$TEMP, w5)
+lisaplot(fp_mg.shp, fp_mg.shp@data$TEMP, w1)
 ```
 
 ### Sua vez
