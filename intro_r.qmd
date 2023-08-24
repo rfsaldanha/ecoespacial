@@ -6,13 +6,13 @@ Seu código fonte é aberto e pode ser instalado sem custos em diversos sistemas
 
 ## Instalando o R
 
-Uma copia do *R* pode ser obtida gratuitamente no site https://cran.r-project.org/. Atente para o sistema operacional antes de efetuar o download.
+Uma copia do *R* pode ser obtida gratuitamente no site [https://cran.r-project.org/](https://cran.r-project.org/). Atente para o sistema operacional antes de efetuar o download.
 
 ## RStudio
 
 Após a instalação do *R*, ele já pode ser usado através de sua interface gráfica padrão. Contudo, é comum a utilização de interfaces de desenvolvimento (IDE - **Integrated Development Environment**) criada por terceiros.
 
-Neste material, iremos utilizar uma IDE chamada *RStudio*. Ela pode ser obtida gratuitamente no site https://www.rstudio.com/products/RStudio/.
+Neste material, iremos utilizar uma IDE chamada *RStudio*. Ela pode ser obtida gratuitamente no site [https://posit.co/products/open-source/rstudio/](https://posit.co/products/open-source/rstudio/).
 
 Após instalar e abrir o RStudio, você verá na tela duas áreas principais. A primeira é chamada de **script** e a segunda de **console**.
 
