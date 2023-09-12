@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.150">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -82,11 +82,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "panel-placement": "start",
   "type": "textbox",
   "limit": 20,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
   "language": {
     "search-no-results-text": "Nenhum resultado",
     "search-matching-documents-text": "documentos correspondentes",
@@ -329,7 +324,7 @@ Attaching package: 'splm'</code></pre>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>natregimes_montana.shp <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/natregimes_montana.gml"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `natregimes_montana' from data source 
-  `/home/rfsaldanha/projects/ecoespacial/data/natregimes_montana.gml' 
+  `/home/raphael/projects/ecoespacial/data/natregimes_montana.gml' 
   using driver `GML'
 Simple feature collection with 55 features and 74 fields
 Geometry type: MULTIPOLYGON
@@ -831,18 +826,18 @@ Simulation results ( variance matrix):
 ========================================================
 Simulated standard errors
       Direct  Indirect     Total
-RD 1.4763990 0.3827682 1.6160511
-UE 0.2191677 0.1154399 0.2697143
+RD 1.3674978 0.4243478 1.5459931
+UE 0.2227749 0.1095275 0.2485368
 
 Simulated z-values:
       Direct   Indirect     Total
-RD -1.201578 -0.2919179 -1.166885
-UE -2.774659 -0.3636845 -2.410326
+RD -1.341009 -0.3528343 -1.283027
+UE -2.723723 -0.3622596 -2.601042
 
 Simulated p-values:
-   Direct   Indirect Total   
-RD 0.229527 0.77035  0.243257
-UE 0.005526 0.71609  0.015938</code></pre>
+   Direct    Indirect Total    
+RD 0.1799176 0.72421  0.1994826
+UE 0.0064551 0.71716  0.0092941</code></pre>
 </div>
 </div>
 </section>
@@ -989,19 +984,19 @@ UE -0.8694233 0.3683616 -0.5010617
 Simulation results ( variance matrix):
 ========================================================
 Simulated standard errors
-     Direct  Indirect     Total
-RD 322.3243 12219.088 12541.407
-UE 158.4215  6004.999  6163.421
+      Direct Indirect    Total
+RD 147.74878 5605.883 5753.624
+UE  62.02735 2352.592 2414.618
 
 Simulated z-values:
        Direct   Indirect      Total
-RD 0.06803367 0.07221846 0.07211093
-UE 0.06603607 0.07171364 0.07156771
+RD 0.06323979 0.07178852 0.07156909
+UE 0.05940991 0.07386598 0.07349465
 
 Simulated p-values:
    Direct  Indirect Total  
-RD 0.94576 0.94243  0.94251
-UE 0.94735 0.94283  0.94295</code></pre>
+RD 0.94958 0.94277  0.94294
+UE 0.95263 0.94112  0.94141</code></pre>
 </div>
 </div>
 </section>
@@ -1087,18 +1082,18 @@ Simulation results ( variance matrix):
 ========================================================
 Simulated standard errors
           Direct   Indirect     Total
-lag_RD 2.5694670 0.75517091 2.9771407
-lag_UE 0.3275239 0.09966249 0.3676486
+lag_RD 2.3743758 0.52353230 2.5983533
+lag_UE 0.3288402 0.08001749 0.3610444
 
 Simulated z-values:
           Direct  Indirect     Total
-lag_RD 0.7696917 0.3145060 0.7440707
-lag_UE 0.9755019 0.3328351 0.9592620
+lag_RD 0.9133306 0.3098754 0.8970373
+lag_UE 0.9443251 0.3352516 0.9343948
 
 Simulated p-values:
-       Direct  Indirect Total  
-lag_RD 0.44148 0.75314  0.45683
-lag_UE 0.32931 0.73926  0.33743</code></pre>
+       Direct  Indirect Total 
+lag_RD 0.36107 0.75666  0.3697
+lag_UE 0.34500 0.73744  0.3501</code></pre>
 </div>
 </div>
 </section>
@@ -1245,9 +1240,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1257,17 +1253,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1280,60 +1267,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    if (id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        for (let i = 0; i < 2; i++) {
-          container.appendChild(note.children[i].cloneNode(true));
-        }
-        return container.innerHTML
-      } else {
-        return note.innerHTML;
-      }
-    } else {
-      return note.innerHTML;
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      try { hash = new URL(url).hash; } catch {}
-      const id = hash.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note !== null) {
-        try {
-          const html = processXRef(id, note);
-          instance.setContent(html);
-        } finally {
-          instance.enable();
-          instance.show();
-        }
-      } else {
-        // See if we can fetch this
-        fetch(url.split('#')[0])
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.getElementById(id);
-          if (note !== null) {
-            const html = processXRef(id, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1377,7 +1310,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1475,7 +1407,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
-
 
 
 
