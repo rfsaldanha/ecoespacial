@@ -152,7 +152,7 @@ summary(lm1)
 
 # Quantos são significativos?
 lm1 <- as.data.frame(lm1)
-table(lm1$`Pr(z > 0)` < 0.05)
+table(lm1$`Pr(z != E(Ii))` < 0.05)
 ```
 
 ## Diagrama de dispersão de Moran
