@@ -5,10 +5,8 @@
 ```{r}
 library(spatialreg)
 library(spdep)
-# remotes::install_github("gpiras/sphet")
 library(sphet)
 ```
-
 
 ## Shapefile
 
@@ -31,17 +29,15 @@ library(leaflet)
 library(RColorBrewer)
 library(htmltools)
 
-qpal <- colorQuantile("OrRd", montana.shp@data$RD90, n=5) 
+qpal <- colorNumeric("OrRd", montana.shp@data$HR90, n=6) 
 
 leaflet(montana.shp) %>%
   addPolygons(stroke = FALSE, fillOpacity = .8, smoothFactor = 0.2,
-              fillColor = ~qpal(RD90), popup = ~htmlEscape(NAME),
+              fillColor = ~qpal(HR90), popup = ~htmlEscape(paste0(NAME, ": ", round(HR90, 2))),
               highlight = highlightOptions(fillOpacity = 0.5,
                                            bringToFront = TRUE)) %>%
   addTiles()
 ```
-
-
 
 ## Matriz de vizinhança
 
@@ -51,7 +47,6 @@ W <- as(w1, "CsparseMatrix")
 trMat <- trW(W, type="mult")
 ```
 
-
 ## Especificação do modelo
 
 ```{r}
@@ -60,10 +55,10 @@ endog <- ~ UE90
 instruments <- ~ FH90
 ```
 
-* HR: homicide rate per 100,000 (1960, 1970, 1980, 1990)
-* RD: resource deprivation 1960, 1970, 1980, 1990 (principal component)
-* UE: unemployment rate 1960, 1970, 1980, 1990
-* FH: % female headed households 1960, 1970, 1980, 1990
+-   HR: homicide rate per 100,000 (1960, 1970, 1980, 1990)
+-   RD: resource deprivation 1960, 1970, 1980, 1990 (principal component)
+-   UE: unemployment rate 1960, 1970, 1980, 1990
+-   FH: % female headed households 1960, 1970, 1980, 1990
 
 ## OLS
 
@@ -74,7 +69,7 @@ mod1.mcrl <- lm(formula = esp1, data = montana.shp@data)
 summary(mod1.mcrl)
 ```
 
-## Multiplicador de Lagrange
+## Testes do Multiplicador de Lagrange
 
 ```{r}
 mod1.lagrange <- lm.LMtests(model = mod1.mcrl, listw = w1,
@@ -92,14 +87,16 @@ summary(mod1.sar)
 summary(spatialreg::impacts(mod1.sar, tr=trMat, R=1000), zstats=TRUE, short=TRUE)
 ```
 
-## SAC (STSLS)
+## SAR (STSLS)
+
+
 
 ```{r warning=FALSE}
-mod1.sac_stsls <- spreg(
+mod1.sar_stsls <- spreg(
   formula = esp1, data = montana.shp@data, listw = w1,
   model = "lag", het = TRUE, endog = endog, instruments = instruments
 )
-summary(mod1.sac_stsls)
+summary(mod1.sar_stsls)
 ```
 
 ```{r warning=FALSE}
@@ -111,7 +108,6 @@ summary(mod1.sac_stsls2)
 
 summary(sphet::impacts(mod1.sac_stsls2, tr=trMat, R=1000), zstats=TRUE, short=TRUE)
 ```
-
 
 ## SEM (MV)
 
@@ -127,12 +123,11 @@ summary(mod1.sem)
 ```{r warning=FALSE}
 mod1.sem_gmm <- spreg(
   formula = esp1, data = montana.shp@data, listw = w1,
-  model = "error", step1.c = TRUE, het = TRUE, endog = endog, instruments = instruments
+  model = "error", step1.c = FALSE, het = TRUE, endog = endog, instruments = instruments
 )
 
 summary(mod1.sem_gmm)
 ```
-
 
 ## SAC (MV)
 
@@ -165,8 +160,6 @@ summary(mod1.sac_gmm2)
 summary(sphet::impacts(mod1.sac_gmm2, tr=trMat, R=1000), zstats=TRUE, short=TRUE)
 ```
 
-
-
 ## SLX (MV)
 
 $y = X \beta + WX \theta + \varepsilon$
@@ -189,7 +182,6 @@ mod1.slx_stsls <- spreg(
 summary(mod1.slx_stsls)
 ```
 
-
 ```{r}
 mod1.slx_stsls2 <- spreg(
   formula = esp1, data = montana.shp@data, listw = w1,
@@ -199,7 +191,6 @@ mod1.slx_stsls2 <- spreg(
 
 summary(sphet::impacts(mod1.slx_stsls2, tr=trMat, R=1000), zstats=TRUE, short=TRUE)
 ```
-
 
 ## SDM (MV)
 
