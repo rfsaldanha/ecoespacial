@@ -2,6 +2,8 @@
 toc: false
 ---
 
+[![](https://zenodo.org/badge/681615613.svg)](https://zenodo.org/badge/latestdoi/681615613)
+
 # Apresentação {.unnumbered}
 
 Este livro *on-line* apresenta uma introdução a Econometria Espacial aplicada com R. Recomendamos como referência o livro *Econometria Espacial aplicada* [@Almeida2012].
