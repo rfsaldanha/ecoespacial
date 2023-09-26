@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Econometria Espacial aplicada com R - Apêndice A — Importar matrizes criadas no Geoda</title>
+<title>Econometria Espacial aplicada com R - Apêndice B — Probit espacial</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./probit_espacial.html" rel="next">
-<link href="./references.html" rel="prev">
+<link href="./importar_matriz.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -113,7 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./importar_matriz.html">Apêndices</a></li><li class="breadcrumb-item"><a href="./importar_matriz.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Importar matrizes criadas no Geoda</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./importar_matriz.html">Apêndices</a></li><li class="breadcrumb-item"><a href="./probit_espacial.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Probit espacial</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -197,13 +196,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./importar_matriz.html" class="sidebar-item-text sidebar-link active">
+  <a href="./importar_matriz.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Importar matrizes criadas no Geoda</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./probit_espacial.html" class="sidebar-item-text sidebar-link">
+  <a href="./probit_espacial.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Probit espacial</span></span></a>
   </div>
 </li>
@@ -219,16 +218,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Índice</h2>
    
   <ul>
-  <li><a href="#shapefile" id="toc-shapefile" class="nav-link active" data-scroll-target="#shapefile"><span class="header-section-number">A.1</span> Shapefile</a></li>
-  <li><a href="#importar-matriz-criada-no-geoda" id="toc-importar-matriz-criada-no-geoda" class="nav-link" data-scroll-target="#importar-matriz-criada-no-geoda"><span class="header-section-number">B</span> Importar matriz criada no Geoda</a>
-  <ul class="collapse">
-  <li><a href="#teste-da-importação" id="toc-teste-da-importação" class="nav-link" data-scroll-target="#teste-da-importação"><span class="header-section-number">B.1</span> Teste da importação</a></li>
-  <li><a href="#criando-os-polígonos-no-r" id="toc-criando-os-polígonos-no-r" class="nav-link" data-scroll-target="#criando-os-polígonos-no-r"><span class="header-section-number">B.2</span> Criando os polígonos no R</a>
-  <ul class="collapse">
-  <li><a href="#matriz" id="toc-matriz" class="nav-link" data-scroll-target="#matriz"><span class="header-section-number">B.2.1</span> Matriz</a></li>
-  <li><a href="#comparação" id="toc-comparação" class="nav-link" data-scroll-target="#comparação"><span class="header-section-number">B.2.2</span> Comparação</a></li>
-  </ul></li>
-  </ul></li>
+  <li><a href="#pacotes" id="toc-pacotes" class="nav-link active" data-scroll-target="#pacotes"><span class="header-section-number">B.1</span> Pacotes</a></li>
+  <li><a href="#shapefile" id="toc-shapefile" class="nav-link" data-scroll-target="#shapefile"><span class="header-section-number">B.2</span> Shapefile</a></li>
+  <li><a href="#variável-de-resposta" id="toc-variável-de-resposta" class="nav-link" data-scroll-target="#variável-de-resposta"><span class="header-section-number">B.3</span> Variável de resposta</a></li>
+  <li><a href="#matriz-de-vizinhança" id="toc-matriz-de-vizinhança" class="nav-link" data-scroll-target="#matriz-de-vizinhança"><span class="header-section-number">B.4</span> Matriz de vizinhança</a></li>
+  <li><a href="#especificação" id="toc-especificação" class="nav-link" data-scroll-target="#especificação"><span class="header-section-number">B.5</span> Especificação</a></li>
+  <li><a href="#modelo-sar" id="toc-modelo-sar" class="nav-link" data-scroll-target="#modelo-sar"><span class="header-section-number">B.6</span> Modelo SAR</a></li>
+  <li><a href="#modelo-sem" id="toc-modelo-sem" class="nav-link" data-scroll-target="#modelo-sem"><span class="header-section-number">B.7</span> Modelo SEM</a></li>
+  <li><a href="#modelo-sarar" id="toc-modelo-sarar" class="nav-link" data-scroll-target="#modelo-sarar"><span class="header-section-number">B.8</span> Modelo SARAR</a></li>
   </ul>
 </nav>
     </div>
@@ -237,7 +234,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Apêndice A — Importar matrizes criadas no Geoda</h1>
+<h1 class="title">Apêndice B — Probit espacial</h1>
 </div>
 
 
@@ -252,15 +249,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="shapefile" class="level2" data-number="A.1">
-<h2 data-number="A.1" class="anchored" data-anchor-id="shapefile"><span class="header-section-number">A.1</span> Shapefile</h2>
+<section id="pacotes" class="level2" data-number="B.1">
+<h2 data-number="B.1" class="anchored" data-anchor-id="pacotes"><span class="header-section-number">B.1</span> Pacotes</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pacotes</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ProbitSpatial)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: Matrix</code></pre>
+</div>
+</div>
+</section>
+<section id="shapefile" class="level2" data-number="B.2">
+<h2 data-number="B.2" class="anchored" data-anchor-id="shapefile"><span class="header-section-number">B.2</span> Shapefile</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pacotes</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Linking to GEOS 3.11.0, GDAL 3.5.3, PROJ 9.1.0; sf_use_s2() is TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sp)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sp)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>The legacy packages maptools, rgdal, and rgeos, underpinning the sp package,
 which was just loaded, will retire in October 2023.
@@ -271,34 +277,41 @@ package maintainers should consider adding sf to Suggests:.
 The sp package is now running under evolution status 2
      (status 2 uses the sf package in place of rgdal)</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Abra o arquivo 'gm10.shp'</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>tvpaga.shp <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/tvpaga4.shp"</span>, <span class="at">options =</span> <span class="st">"ENCODING=WINDOWS-1252"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Abra o arquivo</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>natregimes_montana.shp <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/natregimes_montana.gml"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>options:        ENCODING=WINDOWS-1252 
-Reading layer `tvpaga4' from data source 
-  `/Users/raphaelsaldanha/Library/Mobile Documents/com~apple~CloudDocs/Projetos/ecoespacial/data/tvpaga4.shp' 
-  using driver `ESRI Shapefile'
-Simple feature collection with 74 features and 41 fields
-Geometry type: POINT
+<pre><code>Reading layer `natregimes_montana' from data source 
+  `/Users/raphaelsaldanha/Library/Mobile Documents/com~apple~CloudDocs/Projetos/ecoespacial/data/natregimes_montana.gml' 
+  using driver `GML'
+Simple feature collection with 55 features and 74 fields
+Geometry type: MULTIPOLYGON
 Dimension:     XY
-Bounding box:  xmin: -56.69285 ymin: -32.06813 xmax: -35.70185 ymax: -3.783775
-CRS:           NA</code></pre>
+Bounding box:  xmin: -116.0625 ymin: 44.35373 xmax: -104.0426 ymax: 49
+Geodetic CRS:  WGS 84</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tvpaga.shp <span class="ot">&lt;-</span> <span class="fu">st_make_valid</span>(tvpaga.shp)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>tvpaga.shp <span class="ot">&lt;-</span> <span class="fu">as_Spatial</span>(tvpaga.shp)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotar o mapa</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tvpaga.shp)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>natregimes_montana.shp <span class="ot">&lt;-</span> <span class="fu">st_make_valid</span>(natregimes_montana.shp)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>natregimes_montana.shp <span class="ot">&lt;-</span> <span class="fu">as_Spatial</span>(natregimes_montana.shp)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotar o mapa</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(natregimes_montana.shp)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="importar_matriz_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+<p><img src="probit_espacial_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
-<section id="importar-matriz-criada-no-geoda" class="level1" data-number="B">
-<h1 data-number="B"><span class="header-section-number">B</span> Importar matriz criada no Geoda</h1>
-<p>Matrizes criadas no Geoda através de polígonos de Voronoi.</p>
+<section id="variável-de-resposta" class="level2" data-number="B.3">
+<h2 data-number="B.3" class="anchored" data-anchor-id="variável-de-resposta"><span class="header-section-number">B.3</span> Variável de resposta</h2>
+<p>Para estes tipos de modelo, precisamos ter ou criar uma variável dicotômica para ser a variável de resposta do modelo.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spdep)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>natregimes_montana.shp<span class="sc">@</span>data<span class="sc">$</span>HRM <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  natregimes_montana.shp<span class="sc">@</span>data<span class="sc">$</span>HR90 <span class="sc">&gt;=</span> <span class="fu">mean</span>(natregimes_montana.shp<span class="sc">@</span>data<span class="sc">$</span>HR90), <span class="cn">TRUE</span>, <span class="cn">FALSE</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="matriz-de-vizinhança" class="level2" data-number="B.4">
+<h2 data-number="B.4" class="anchored" data-anchor-id="matriz-de-vizinhança"><span class="header-section-number">B.4</span> Matriz de vizinhança</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spdep)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: spData</code></pre>
 </div>
@@ -307,140 +320,160 @@ CRS:           NA</code></pre>
 package with: `install.packages('spDataLarge',
 repos='https://nowosad.github.io/drat/', type='source')`</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>queen_nb <span class="ot">&lt;-</span> <span class="fu">read.gal</span>(<span class="at">file =</span> <span class="st">"data/tvpaga_queen.gal"</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>queen_w <span class="ot">&lt;-</span> <span class="fu">nb2listw</span>(<span class="at">neighbours =</span> queen_nb, <span class="at">style =</span> <span class="st">"W"</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>rook_nb <span class="ot">&lt;-</span> <span class="fu">read.gal</span>(<span class="at">file =</span> <span class="st">"data/tvpaga_rook.gal"</span>)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>rook_w <span class="ot">&lt;-</span> <span class="fu">nb2listw</span>(<span class="at">neighbours =</span> rook_nb, <span class="at">style =</span> <span class="st">"W"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="teste-da-importação" class="level2" data-number="B.1">
-<h2 data-number="B.1" class="anchored" data-anchor-id="teste-da-importação"><span class="header-section-number">B.1</span> Teste da importação</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(queen_nb)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Neighbour list object:
-Number of regions: 74 
-Number of nonzero links: 404 
-Percentage nonzero weights: 7.377648 
-Average number of links: 5.459459 
-Link number distribution:
-
- 2  3  4  5  6  7  8  9 
- 1  3 17 18 18 10  6  1 
-1 least connected region:
-73 with 2 links
-1 most connected region:
-33 with 9 links</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rook_nb)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Neighbour list object:
-Number of regions: 74 
-Number of nonzero links: 404 
-Percentage nonzero weights: 7.377648 
-Average number of links: 5.459459 
-Link number distribution:
-
- 2  3  4  5  6  7  8  9 
- 1  3 17 18 18 10  6  1 
-1 least connected region:
-73 with 2 links
-1 most connected region:
-33 with 9 links</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">moran.test</span>(<span class="at">x =</span> tvpaga.shp<span class="sc">@</span>data<span class="sc">$</span>GIN, <span class="at">listw =</span> queen_w)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Moran I test under randomisation
-
-data:  tvpaga.shp@data$GIN  
-weights: queen_w    
-
-Moran I statistic standard deviate = 0.59822, p-value = 0.2748
-alternative hypothesis: greater
-sample estimates:
-Moran I statistic       Expectation          Variance 
-    -1.141553e-02     -1.369863e-02      1.456567e-05 </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">moran.test</span>(<span class="at">x =</span> tvpaga.shp<span class="sc">@</span>data<span class="sc">$</span>GIN, <span class="at">listw =</span> rook_w)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Moran I test under randomisation
-
-data:  tvpaga.shp@data$GIN  
-weights: rook_w    
-
-Moran I statistic standard deviate = 0.59822, p-value = 0.2748
-alternative hypothesis: greater
-sample estimates:
-Moran I statistic       Expectation          Variance 
-    -1.141553e-02     -1.369863e-02      1.456567e-05 </code></pre>
-</div>
-</div>
-</section>
-<section id="criando-os-polígonos-no-r" class="level2" data-number="B.2">
-<h2 data-number="B.2" class="anchored" data-anchor-id="criando-os-polígonos-no-r"><span class="header-section-number">B.2</span> Criando os polígonos no R</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dismo)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spatialreg)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: raster</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>coordenadas <span class="ot">&lt;-</span> <span class="fu">coordinates</span>(<span class="at">obj =</span> tvpaga.shp)</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>tvpaga_voronoi <span class="ot">&lt;-</span> <span class="fu">voronoi</span>(coordenadas)</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tvpaga_voronoi)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="importar_matriz_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<section id="matriz" class="level3" data-number="B.2.1">
-<h3 data-number="B.2.1" class="anchored" data-anchor-id="matriz"><span class="header-section-number">B.2.1</span> Matriz</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Matriz queen</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>w1 <span class="ot">&lt;-</span> <span class="fu">nb2listw</span>(<span class="fu">poly2nb</span>(tvpaga_voronoi, <span class="at">queen =</span> <span class="cn">TRUE</span>), <span class="at">style =</span> <span class="st">"W"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="comparação" class="level3" data-number="B.2.2">
-<h3 data-number="B.2.2" class="anchored" data-anchor-id="comparação"><span class="header-section-number">B.2.2</span> Comparação</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">moran.test</span>(<span class="at">x =</span> tvpaga.shp<span class="sc">@</span>data<span class="sc">$</span>GIN, <span class="at">listw =</span> queen_w)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
 <pre><code>
-    Moran I test under randomisation
-
-data:  tvpaga.shp@data$GIN  
-weights: queen_w    
-
-Moran I statistic standard deviate = 0.59822, p-value = 0.2748
-alternative hypothesis: greater
-sample estimates:
-Moran I statistic       Expectation          Variance 
-    -1.141553e-02     -1.369863e-02      1.456567e-05 </code></pre>
+Attaching package: 'spatialreg'</code></pre>
 </div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:spdep':
+
+    get.ClusterOption, get.coresOption, get.mcOption,
+    get.VerboseOption, get.ZeroPolicyOption, set.ClusterOption,
+    set.coresOption, set.mcOption, set.VerboseOption,
+    set.ZeroPolicyOption</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>w1 <span class="ot">&lt;-</span> <span class="fu">nb2listw</span>(<span class="fu">poly2nb</span>(natregimes_montana.shp, <span class="at">queen =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>w1 <span class="ot">&lt;-</span> <span class="fu">as</span>(w1, <span class="st">"CsparseMatrix"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="especificação" class="level2" data-number="B.5">
+<h2 data-number="B.5" class="anchored" data-anchor-id="especificação"><span class="header-section-number">B.5</span> Especificação</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>esp <span class="ot">&lt;-</span> HRM <span class="sc">~</span> RD90 <span class="sc">+</span> UE90</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="modelo-sar" class="level2" data-number="B.6">
+<h2 data-number="B.6" class="anchored" data-anchor-id="modelo-sar"><span class="header-section-number">B.6</span> Modelo SAR</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>mod_sar <span class="ot">&lt;-</span> <span class="fu">ProbitSpatialFit</span>(</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> esp, </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> natregimes_montana.shp<span class="sc">@</span>data,</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">W =</span> w1, </span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">DGP =</span> <span class="st">"SAR"</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">moran.test</span>(<span class="at">x =</span> tvpaga.shp<span class="sc">@</span>data<span class="sc">$</span>GIN, <span class="at">listw =</span> w1)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_sar)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>
-    Moran I test under randomisation
+<pre><code>-- Univariate conditional estimation of spatial probit --
 
-data:  tvpaga.shp@data$GIN  
-weights: w1    
+Sample size =  55 
+Number of covariates =  3 
+DGP =  SAR 
+estimation method =  conditional 
+Variance covariance =  Var-Covar Matrix 
+order of approx. of iW in the conditional step =  6 
+Execution time =  0.01000786 
 
-Moran I statistic standard deviate = 0.61642, p-value = 0.2688
-alternative hypothesis: greater
-sample estimates:
-Moran I statistic       Expectation          Variance 
-    -1.141553e-02     -1.369863e-02      1.371827e-05 </code></pre>
+-----------------------------------------------
+
+Unconditional standard errors with likelihood-ratio test
+              Estimate   LR test      Pr(&gt;z)
+(Intercept) -1.1675986 8.6786161 0.003219654
+RD90         0.2980135 0.4508751 0.501919675
+UE90         0.1561540 7.5361813 0.006047208
+rho          0.2835792 1.1076506 0.292593222
+
+-----------------------------------------------
+Confusion Matrix:
+       pred 1 pred 0
+true 1      7      4
+true 0     13     31
+Accuracy:    0.6909091 
+Sensitivity:     0.35    Specificity:    0.8857143 
+Pos Pred Value:  0.6363636   Neg Pred Value: 0.7045455 </code></pre>
+</div>
+</div>
+</section>
+<section id="modelo-sem" class="level2" data-number="B.7">
+<h2 data-number="B.7" class="anchored" data-anchor-id="modelo-sem"><span class="header-section-number">B.7</span> Modelo SEM</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>mod_sem <span class="ot">&lt;-</span> <span class="fu">ProbitSpatialFit</span>(</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> esp, </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> natregimes_montana.shp<span class="sc">@</span>data,</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">W =</span> w1, </span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">DGP =</span> <span class="st">"SEM"</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_sem)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>-- Univariate conditional estimation of spatial probit --
+
+Sample size =  55 
+Number of covariates =  3 
+DGP =  SEM 
+estimation method =  conditional 
+Variance covariance =  Var-Covar Matrix 
+order of approx. of iW in the conditional step =  6 
+Execution time =  0.007150888 
+
+-----------------------------------------------
+
+Unconditional standard errors with likelihood-ratio test
+              Estimate   LR test      Pr(&gt;z)
+(Intercept) -1.2501767 8.9098968 0.002836293
+RD90         0.2621078 0.3732729 0.541225647
+UE90         0.1531211 7.0668738 0.007852214
+rho          0.2287299 0.3990766 0.527566502
+
+-----------------------------------------------
+Confusion Matrix:
+       pred 1 pred 0
+true 1      7      3
+true 0     13     32
+Accuracy:    0.7090909 
+Sensitivity:     0.35    Specificity:    0.9142857 
+Pos Pred Value:  0.7     Neg Pred Value: 0.7111111 </code></pre>
+</div>
+</div>
+</section>
+<section id="modelo-sarar" class="level2" data-number="B.8">
+<h2 data-number="B.8" class="anchored" data-anchor-id="modelo-sarar"><span class="header-section-number">B.8</span> Modelo SARAR</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>mod_sarar <span class="ot">&lt;-</span> <span class="fu">ProbitSpatialFit</span>(</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> esp, </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> natregimes_montana.shp<span class="sc">@</span>data,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">W =</span> w1, <span class="at">M =</span> w1,</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">DGP =</span> <span class="st">"SARAR"</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_sarar)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>-- Univariate conditional estimation of spatial probit --
+
+Sample size =  55 
+Number of covariates =  3 
+DGP =  SARAR 
+estimation method =  conditional 
+Variance covariance =  Var-Covar Matrix 
+order of approx. of iW in the conditional step =  6 
+Execution time =  0.036201 
+
+-----------------------------------------------
+
+Unconditional standard errors with likelihood-ratio test
+              Estimate   LR test      Pr(&gt;z)
+(Intercept) -1.1350511 8.5202224 0.003512216
+RD90         0.2981930 0.4525526 0.501125232
+UE90         0.1541322 7.5865738 0.005880460
+rho          0.3417969 1.6667927 0.196688677
+lambda      -0.1316406 0.7036277 0.401567420
+
+-----------------------------------------------
+Confusion Matrix:
+       pred 1 pred 0
+true 1      7      5
+true 0     13     30
+Accuracy:    0.6727273 
+Sensitivity:     0.35    Specificity:    0.8571429 
+Pos Pred Value:  0.5833333   Neg Pred Value: 0.6976744 </code></pre>
 </div>
 </div>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -742,14 +775,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./references.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Referências</span>
+      <a href="./importar_matriz.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Importar matrizes criadas no Geoda</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./probit_espacial.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Probit espacial</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

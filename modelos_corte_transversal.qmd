@@ -89,8 +89,6 @@ summary(spatialreg::impacts(mod1.sar, tr=trMat, R=1000), zstats=TRUE, short=TRUE
 
 ## SAR (STSLS)
 
-
-
 ```{r warning=FALSE}
 mod1.sar_stsls <- spreg(
   formula = esp1, data = montana.shp@data, listw = w1,

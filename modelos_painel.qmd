@@ -70,9 +70,9 @@ dados$lag_UE80 <- lag.listw(w1, dados$UE80)
 
 Para empilhar os dados de modo automático, vamos precisar que a base de dados tenha uma organização básica.
 
-* O primeiro campo deve ser o de identificação;
-* Os nomes das variáveis devem conter a especificação da variável e o ano, algo como "PIB2000" e "PIB2010".
-* Não devem existir outras variáveis além da identificação e dados do painel.
+-   O primeiro campo deve ser o de identificação;
+-   Os nomes das variáveis devem conter a especificação da variável e o ano, algo como "PIB2000" e "PIB2010".
+-   Não devem existir outras variáveis além da identificação e dados do painel.
 
 Vejamos a base de dados do exemplo.
 
@@ -109,10 +109,10 @@ Depois de declarada, vamos colocar os dados em painel.
 ```{r}
 dadosp <- painel("POLY_ID", dados)
 ```
+
 ```{r}
 head(dadosp)
 ```
-
 
 ### Verifica se o painél é balanceado
 
@@ -120,13 +120,11 @@ head(dadosp)
 is.pbalanced(dadosp)
 ```
 
-
 ## Especificação do modelo
 
 ```{r}
 esp <- HR ~ RD + UE
 ```
-
 
 ## Testes
 
@@ -170,8 +168,6 @@ dimnames(res) <- list(c("test", "p-value"), c("SAR","SEM","SAC"))
 round(x = res, digits = 5)
 ```
 
-
-
 ### Teste Pesaran CD (cross-section dependence)
 
 ```{r}
@@ -203,20 +199,20 @@ round(x = res, digits = 5)
 ### Teste BSJK
 
 ```{r}
-res_c1 <- bsjktest(esp, data = dadosp, listw = w1, test = "C.1")
-res_c2 <- bsjktest(esp, data = dadosp, listw = w1, test = "C.2")
-res_c3 <- bsjktest(esp, data = dadosp, listw = w1, test = "C.3")
-res_j <- bsjktest(esp, data = dadosp, listw = w1, test = "J")
-
-res <- cbind(
-  c(res_c1$statistic, res_c1$p.value),
-  c(res_c2$statistic, res_c2$p.value),
-  c(res_c3$statistic, res_c3$p.value),
-  c(res_j$statistic, res_j$p.value)
-)
-
-dimnames(res) <- list(c("test", "p-value"), c("C.1","C.2","C.3", "J"))
-round(x = res, digits = 5)
+# res_c1 <- bsjktest(esp, data = dadosp, listw = w1, test = "C.1")
+# res_c2 <- bsjktest(esp, data = dadosp, listw = w1, test = "C.2")
+# res_c3 <- bsjktest(esp, data = dadosp, listw = w1, test = "C.3")
+# res_j <- bsjktest(esp, data = dadosp, listw = w1, test = "J")
+# 
+# res <- cbind(
+#   c(res_c1$statistic, res_c1$p.value),
+#   c(res_c2$statistic, res_c2$p.value),
+#   c(res_c3$statistic, res_c3$p.value),
+#   c(res_j$statistic, res_j$p.value)
+# )
+# 
+# dimnames(res) <- list(c("test", "p-value"), c("C.1","C.2","C.3", "J"))
+# round(x = res, digits = 5)
 ```
 
 ## Modelos
@@ -247,7 +243,6 @@ summary(modSAR_gm)
 impacts(modSAR_gm, listw = w1, time = 2)
 ```
 
-
 ### SEM (ML)
 
 ```{r warning=FALSE}
@@ -262,7 +257,6 @@ modSEM_gm <- spgm(esp, data = dadosp, listw = w1, lag = FALSE, spatial.error = T
 
 summary(modSEM_gm)
 ```
-
 
 ### SAC (ML)
 
@@ -284,11 +278,10 @@ summary(modSAC_gm)
 # splm:::impacts(modSAC_gm, listw = w1, time = 2)
 ```
 
-
 ### Especificação com lag
 
 ```{r}
-esp_lag <- HR ~ lag_RD + lag_UE
+esp_lag <- HR ~ RD + lag_RD + UE + lag_UE
 ```
 
 ### SDM (ML)

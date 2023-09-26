@@ -1,0 +1,99 @@
+# Probit espacial
+
+## Pacotes
+
+```{r}
+library(ProbitSpatial)
+```
+
+## Shapefile
+
+```{r}
+# Pacotes
+library(sf)
+library(sp)
+
+# Abra o arquivo
+natregimes_montana.shp <- st_read("data/natregimes_montana.gml")
+natregimes_montana.shp <- st_make_valid(natregimes_montana.shp)
+natregimes_montana.shp <- as_Spatial(natregimes_montana.shp)
+
+# Plotar o mapa
+plot(natregimes_montana.shp)
+```
+
+## Variável de resposta
+
+Para estes tipos de modelo, precisamos ter ou criar uma variável dicotômica para ser a variável de resposta do modelo.
+
+```{r}
+natregimes_montana.shp@data$HRM <- ifelse(
+  natregimes_montana.shp@data$HR90 >= mean(natregimes_montana.shp@data$HR90), TRUE, FALSE
+)
+```
+
+
+## Matriz de vizinhança
+
+
+```{r}
+library(spdep)
+library(spatialreg)
+
+w1 <- nb2listw(poly2nb(natregimes_montana.shp, queen = TRUE))
+w1 <- as(w1, "CsparseMatrix")
+```
+
+## Especificação
+
+```{r}
+esp <- HRM ~ RD90 + UE90
+```
+
+
+## Modelo SAR
+
+```{r}
+mod_sar <- ProbitSpatialFit(
+  formula = esp, 
+  data = natregimes_montana.shp@data,
+  W = w1, 
+  DGP = "SAR"
+)
+```
+
+```{r}
+summary(mod_sar)
+```
+
+## Modelo SEM
+
+```{r}
+mod_sem <- ProbitSpatialFit(
+  formula = esp, 
+  data = natregimes_montana.shp@data,
+  W = w1, 
+  DGP = "SEM"
+)
+```
+
+```{r}
+summary(mod_sem)
+```
+
+
+
+## Modelo SARAR
+
+```{r}
+mod_sarar <- ProbitSpatialFit(
+  formula = esp, 
+  data = natregimes_montana.shp@data,
+  W = w1, M = w1,
+  DGP = "SARAR"
+)
+```
+
+```{r}
+summary(mod_sarar)
+```

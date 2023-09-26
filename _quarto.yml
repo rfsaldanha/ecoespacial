@@ -19,6 +19,7 @@ book:
     - references.qmd
   appendices: 
     - importar_matriz.qmd
+    - probit_espacial.qmd
 
 lang: pt
 
