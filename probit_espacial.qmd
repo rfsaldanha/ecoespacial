@@ -32,9 +32,7 @@ natregimes_montana.shp@data$HRM <- ifelse(
 )
 ```
 
-
 ## Matriz de vizinhança
-
 
 ```{r}
 library(spdep)
@@ -49,7 +47,6 @@ w1 <- as(w1, "CsparseMatrix")
 ```{r}
 esp <- HRM ~ RD90 + UE90
 ```
-
 
 ## Modelo SAR
 
@@ -80,8 +77,6 @@ mod_sem <- ProbitSpatialFit(
 ```{r}
 summary(mod_sem)
 ```
-
-
 
 ## Modelo SARAR
 
