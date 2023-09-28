@@ -31,15 +31,17 @@ str(dados)
 
 ## Especificação
 
-*Q9303 : Taxa de crescimento da produção agrícola microrregional no período de 1993 a 2003
-*P9303: Taxa de crescimento da produtividade da terra no período de 1993 a 2003
-*G0: medida de gap tecnológico 
-*CI9303: taxa de crescimento do crédito para investimento agrícola no período de 1993 a 2003.
+*Q9303 : Taxa de crescimento da produção agrícola microrregional no período de 1993 a 2003*
+
+P9303: Taxa de crescimento da produtividade da terra no período de 1993 a 2003
+
+*G0: medida de gap tecnológico*
+
+CI9303: taxa de crescimento do crédito para investimento agrícola no período de 1993 a 2003.
 
 ```{r}
-esp <-  Q9303 ~ P9303 + G0 + CI9303
+esp <- Q9303 ~ P9303 + G0 + CI9303
 ```
-
 
 ## Modelo OLS
 
@@ -63,12 +65,11 @@ map.resids <- SpatialPointsDataFrame(data=data.frame(resids), coords=cbind(dados
 spplot(map.resids, cuts=quantile(resids), col.regions=cores, cex=1) 
 ```
 
-## GWR com kernel gaussiano 
+## GWR com kernel gaussiano
 
 ```{r}
 coord <- as.matrix(cbind(dados$X_COORD,dados$Y_COORD))
 ```
-
 
 ```{r}
 mod1.gwr <- MGWRSAR(formula = esp, data = dados, 
@@ -82,9 +83,6 @@ plot_mgwrsar(mod1.gwr,type='B_coef',var='CI9303', radius = 20000)
 plot_mgwrsar(mod1.gwr,type='t_coef',var='CI9303', radius = 20000)
 ```
 
-
-
-
 ## GWR com 'CV leave one out' e kernel adaptativo biquadrado (considerando 20 vizinhos) e remoção de outliers
 
 ```{r}
@@ -93,18 +91,17 @@ mod2.gwr <- MGWRSAR(formula = esp, data = dados, coord=coord,
                     Model = 'GWR',
                     control=list(isgcv=TRUE,remove_local_outlier=TRUE,outv=0.01))
 summary_mgwrsar(mod2.gwr)
+
+plot_mgwrsar(mod2.gwr, type='B_coef',var='G0', radius = 20000)
 ```
 
-
 Saiba mais em: https://cran.r-project.org/web/packages/mgwrsar/vignettes/mgwrsar-basic_examples.html
-
 
 ## Usando o pacote `spgwr`
 
 ```{r}
 library(spgwr)
 ```
-
 
 ### Kernel bandwith
 

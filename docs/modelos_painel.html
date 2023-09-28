@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.163">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -82,11 +82,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "panel-placement": "start",
   "type": "textbox",
   "limit": 20,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
   "language": {
     "search-no-results-text": "Nenhum resultado",
     "search-matching-documents-text": "documentos correspondentes",
@@ -309,7 +304,7 @@ repos='https://nowosad.github.io/drat/', type='source')`</code></pre>
 <pre><code>Loading required package: sf</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Linking to GEOS 3.11.0, GDAL 3.5.3, PROJ 9.1.0; sf_use_s2() is TRUE</code></pre>
+<pre><code>Linking to GEOS 3.10.2, GDAL 3.4.1, PROJ 8.2.1; sf_use_s2() is TRUE</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plm)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(splm)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -335,7 +330,7 @@ Attaching package: 'splm'</code></pre>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>natregimes_montana.shp <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/natregimes_montana.gml"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `natregimes_montana' from data source 
-  `/Users/raphaelsaldanha/Library/Mobile Documents/com~apple~CloudDocs/Projetos/ecoespacial/data/natregimes_montana.gml' 
+  `/home/raphael/projects/ecoespacial/data/natregimes_montana.gml' 
   using driver `GML'
 Simple feature collection with 55 features and 74 fields
 Geometry type: MULTIPOLYGON
@@ -775,7 +770,7 @@ Balanced Panel: n = 55, T = 2, N = 110
 
 Residuals:
        Min.     1st Qu.      Median     3rd Qu.        Max. 
--1.6018e+01 -1.4836e+00 -8.0665e-17  1.4836e+00  1.6018e+01 
+-1.6018e+01 -1.4836e+00 -9.7145e-17  1.4836e+00  1.6018e+01 
 
 Coefficients:
    Estimate Std. Error t-value Pr(&gt;|t|)  
@@ -807,7 +802,7 @@ spml(formula = esp, data = dadosp, listw = w1, model = "within",
 
 Residuals:
        Min.     1st Qu.      Median     3rd Qu.        Max. 
--1.6051e+01 -1.5039e+00  6.3491e-16  1.5039e+00  1.6051e+01 
+-1.6051e+01 -1.5039e+00  5.0307e-16  1.5039e+00  1.6051e+01 
 
 Spatial autoregressive coefficient:
        Estimate Std. Error t-value Pr(&gt;|t|)
@@ -825,25 +820,25 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>Impact measures (lag, trace):
        Direct    Indirect      Total
-RD -1.7232646 -0.07418349 -1.7974481
-UE -0.6054694 -0.02606438 -0.6315337
+RD -1.7232646 -0.07418350 -1.7974481
+UE -0.6054694 -0.02606439 -0.6315338
 ========================================================
 Simulation results ( variance matrix):
 ========================================================
 Simulated standard errors
-      Direct  Indirect     Total
-RD 1.4072468 0.4029959 1.5247522
-UE 0.2132947 0.1078704 0.2551811
+     Direct   Indirect     Total
+RD 1.497600 0.34713880 1.6504999
+UE 0.192381 0.09242188 0.2173533
 
 Simulated z-values:
       Direct   Indirect     Total
-RD -1.196266 -0.2464975 -1.169225
-UE -2.748848 -0.3281852 -2.436372
+RD -1.068282 -0.2843316 -1.029119
+UE -2.982020 -0.3764376 -2.799475
 
 Simulated p-values:
-   Direct    Indirect Total   
-RD 0.2315929 0.80530  0.242313
-UE 0.0059805 0.74277  0.014835</code></pre>
+   Direct    Indirect Total    
+RD 0.2853934 0.77616  0.3034236
+UE 0.0028635 0.70659  0.0051186</code></pre>
 </div>
 </div>
 </section>
@@ -863,7 +858,7 @@ spgm(formula = esp, data = dadosp, listw = w1, model = "within",
 
 Residuals:
        Min.     1st Qu.      Median     3rd Qu.        Max. 
--1.5911e+01 -1.5530e+00 -8.3267e-17  1.5530e+00  1.5911e+01 
+-1.5911e+01 -1.5530e+00 -1.1102e-16  1.5530e+00  1.5911e+01 
 
 Spatial autoregressive coefficient:
        Estimate Std. Error t-value Pr(&gt;|t|)
@@ -900,7 +895,7 @@ spml(formula = esp, data = dadosp, listw = w1, model = "within",
 
 Residuals:
        Min.     1st Qu.      Median     3rd Qu.        Max. 
--1.5976e+01 -1.5531e+00 -4.4409e-16  1.5531e+00  1.5976e+01 
+-1.5976e+01 -1.5531e+00  8.8818e-16  1.5531e+00  1.5976e+01 
 
 Spatial error parameter:
     Estimate Std. Error t-value Pr(&gt;|t|)
@@ -931,7 +926,7 @@ spgm(formula = esp, data = dadosp, listw = w1, model = "within",
 
 Residuals:
        Min.     1st Qu.      Median     3rd Qu.        Max. 
--1.6009e+01 -1.6060e+00 -2.3939e-16  1.6060e+00  1.6009e+01 
+-1.6009e+01 -1.6060e+00  2.7756e-17  1.6060e+00  1.6009e+01 
 
 Estimated spatial coefficient, variance components and theta:
           Estimate
@@ -962,7 +957,7 @@ spml(formula = esp, data = dadosp, listw = w1, model = "within",
 
 Residuals:
        Min.     1st Qu.      Median     3rd Qu.        Max. 
--1.5352e+01 -2.2314e+00 -1.3323e-15  2.2314e+00  1.5352e+01 
+-1.5352e+01 -2.2314e+00  1.1102e-15  2.2314e+00  1.5352e+01 
 
 Spatial error parameter:
     Estimate Std. Error t-value  Pr(&gt;|t|)    
@@ -990,19 +985,19 @@ UE -0.8694233 0.3683616 -0.5010617
 Simulation results ( variance matrix):
 ========================================================
 Simulated standard errors
-     Direct  Indirect     Total
-RD 1.946738  51.19676  52.48391
-UE 7.317604 279.28097 286.59416
+      Direct Indirect    Total
+RD 1.6628996 23.38088 23.73790
+UE 0.4060046 13.06552 13.37577
 
 Simulated z-values:
-       Direct   Indirect      Total
-RD -0.5474559 0.09325340 0.07066010
-UE -0.0428520 0.07745015 0.07437967
+      Direct    Indirect       Total
+RD -0.830345 -0.03986328 -0.09743148
+UE -2.053514  0.12813356  0.06282965
 
 Simulated p-values:
-   Direct  Indirect Total  
-RD 0.58407 0.92570  0.94367
-UE 0.96582 0.93827  0.94071</code></pre>
+   Direct   Indirect Total  
+RD 0.406344 0.96820  0.92238
+UE 0.040023 0.89804  0.94990</code></pre>
 </div>
 </div>
 </section>
@@ -1065,7 +1060,7 @@ spml(formula = esp_lag, data = dadosp, listw = w1, model = "within",
 
 Residuals:
        Min.     1st Qu.      Median     3rd Qu.        Max. 
--1.5074e+01 -1.3354e+00  1.1102e-16  1.3354e+00  1.5074e+01 
+-1.5074e+01 -1.3354e+00  8.0491e-16  1.3354e+00  1.5074e+01 
 
 Spatial autoregressive coefficient:
        Estimate Std. Error t-value Pr(&gt;|t|)
@@ -1094,24 +1089,24 @@ Simulation results ( variance matrix):
 ========================================================
 Simulated standard errors
           Direct  Indirect     Total
-RD     1.5459572 0.4607990 1.8523189
-lag_RD 2.9029579 0.7341860 3.3780211
-UE     0.2624101 0.2079464 0.3769690
-lag_UE 0.3797025 0.2391358 0.5044613
+RD     1.7462196 0.4913898 2.0909027
+lag_RD 2.9161381 1.0253516 3.6333436
+UE     0.2893176 0.2170703 0.4194057
+lag_UE 0.3982713 0.2455605 0.5517302
 
 Simulated z-values:
            Direct   Indirect      Total
-RD     -0.7876956 -0.4614494 -0.7722099
-lag_RD  0.7595588  0.5349968  0.7690166
-UE     -3.6727120 -0.9221099 -3.0652549
-lag_UE  2.7569296  0.8594320  2.4825177
+RD     -0.6797048 -0.4399251 -0.6710444
+lag_RD  0.9612213  0.5794403  0.9350022
+UE     -3.3747754 -0.8523427 -2.7691565
+lag_UE  2.7496862  0.8510901  2.3636826
 
 Simulated p-values:
        Direct     Indirect Total    
-RD     0.43087478 0.64448  0.4399901
-lag_RD 0.44751837 0.59265  0.4418835
-UE     0.00023999 0.35647  0.0021748
-lag_UE 0.00583469 0.39010  0.0130458</code></pre>
+RD     0.49669139 0.65999  0.5021922
+lag_RD 0.33644091 0.56229  0.3497872
+UE     0.00073876 0.39402  0.0056202
+lag_UE 0.00596524 0.39472  0.0180943</code></pre>
 </div>
 </div>
 </section>
@@ -1129,8 +1124,8 @@ spml(formula = esp_lag, data = dadosp, listw = w1, model = "within",
     effect = "individual", lag = FALSE, spatial.error = "b")
 
 Residuals:
-    Min.  1st Qu.   Median  3rd Qu.     Max. 
--15.0329  -1.5952   0.0000   1.5952  15.0329 
+       Min.     1st Qu.      Median     3rd Qu.        Max. 
+-1.5033e+01 -1.5952e+00  8.8818e-16  1.5952e+00  1.5033e+01 
 
 Spatial error parameter:
     Estimate Std. Error t-value Pr(&gt;|t|)
@@ -1163,7 +1158,7 @@ Balanced Panel: n = 55, T = 2, N = 110
 
 Residuals:
        Min.     1st Qu.      Median     3rd Qu.        Max. 
--1.5064e+01 -1.5592e+00  2.0730e-16  1.5592e+00  1.5064e+01 
+-1.5064e+01 -1.5592e+00  2.4286e-16  1.5592e+00  1.5064e+01 
 
 Coefficients:
        Estimate Std. Error t-value Pr(&gt;|t|)  
@@ -1266,9 +1261,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1278,17 +1274,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1301,60 +1288,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    if (id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        for (let i = 0; i < 2; i++) {
-          container.appendChild(note.children[i].cloneNode(true));
-        }
-        return container.innerHTML
-      } else {
-        return note.innerHTML;
-      }
-    } else {
-      return note.innerHTML;
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      try { hash = new URL(url).hash; } catch {}
-      const id = hash.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note !== null) {
-        try {
-          const html = processXRef(id, note);
-          instance.setContent(html);
-        } finally {
-          instance.enable();
-          instance.show();
-        }
-      } else {
-        // See if we can fetch this
-        fetch(url.split('#')[0])
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.getElementById(id);
-          if (note !== null) {
-            const html = processXRef(id, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1398,7 +1331,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1496,7 +1428,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
-
 
 
 
